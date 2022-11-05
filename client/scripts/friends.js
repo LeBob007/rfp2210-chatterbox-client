@@ -11,14 +11,14 @@ var Friends = {
   // and check the friendship status of other users.
 
   toggleStatus: (friendName) => {
-    if (!Friend.isFriend(friendName)) {
+    if (!Friends.isFriend(friendName)) {
       Friends._data.add(friendName);
     } else {
       Friends._data.delete(friendName);
     }
 
     // RENDER MESSAGES AGAIN
-
+    MessagesView.render();
   },
 
   isFriend: (friendName) => {

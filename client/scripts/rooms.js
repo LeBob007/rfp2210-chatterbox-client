@@ -11,8 +11,16 @@ var Rooms = {
   // TODO: Define methods which allow you to add rooms, update the list,
   // mark a room as selected, etc.
 
-  updateRooms: () => {
+  get: () => {
+    return Rooms._data;
+  },
 
+  updateRooms: () => {
+    Messages.get().each((message) => {
+      Rooms._data.add(message.roomname);
+    });
+
+    RoomsView.render();
   },
 
 
@@ -21,12 +29,16 @@ var Rooms = {
 
 
     // maybe change selected room
-
+    RoomsView.render();
   },
 
 
   setSelectedRoom: (roomName) => {
     Rooms._selectedRoom = roomName;
-  }
+    MessagesView.render();
+  },
 
+  getSelectedRoom: () => {
+    return Rooms._selectedRoom;
+  }
 };

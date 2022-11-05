@@ -12,21 +12,35 @@ var RoomsView = {
     RoomsView.$button.click(function() {
       RoomsView.handleClick();
     });
+
+    RoomsView.$select.change(function() {
+      RoomsView.handleChange();
+    });
   },
 
   render: function() {
     // TODO: Render out the list of rooms.
+    RoomsView.$select.html('');
+    var roomList = Rooms.get();
+    roomList.forEach((roomName) => {
+      RoomsView.renderRoom(roomName);
+    });
 
   },
 
   renderRoom: function(roomName) {
     // TODO: Render out a single room.
-    var $option = $('<option>').val(roomName).text(roomName);
+    if (roomName === Rooms.getSelectedRoom()) {
+      var $option = $('<option selected>').val(roomName).text(roomName);
+    } else {
+      var $option = $('<option>').val(roomName).text(roomName);
+    }
     RoomsView.$select.append($option);
   },
 
   handleChange: function(event) {
     // TODO: Handle a user selecting a different room.
+    Rooms.setSelectedRoom(RoomsView.$select.val());
   },
 
   handleClick: function(event) {
