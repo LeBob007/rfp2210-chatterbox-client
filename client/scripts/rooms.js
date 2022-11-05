@@ -5,9 +5,28 @@
 var Rooms = {
 
   // TODO: Define how you want to store the list of rooms
-  _data: null,
+  _data: new Set(),
+  _selectedRoom: '',
 
   // TODO: Define methods which allow you to add rooms, update the list,
   // mark a room as selected, etc.
+
+  updateRooms: () => {
+
+  },
+
+
+  add: (roomName) => {
+    Rooms._data.add(roomName);
+
+
+    // maybe change selected room
+
+  },
+
+
+  setSelectedRoom: (roomName) => {
+    Rooms._selectedRoom = roomName;
+  }
 
 };
